@@ -6,7 +6,7 @@ import utilities from "./tailwind.json";
 import RootNavigator from "./src/navigator/RootNavigator";
 
 const client = new ApolloClient({
-  uri: "http://localhost:5001/api/ups-graphql",
+  uri: "http://192.168.1.54:5001/api/ups-graphql",
   cache: new InMemoryCache(),
 });
 
