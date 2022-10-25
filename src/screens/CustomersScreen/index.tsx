@@ -8,7 +8,6 @@ import { Image, Input } from "@rneui/themed";
 import { Colors } from "../../shared/theme/Colors";
 import { GET_CUSTOMERS } from "../../graphql/queries";
 import CustomerCard from "../../components/CustomerCard";
-import { useOrders } from "../../hooks/useOrders";
 
 const CustomersScreen = () => {
   const tw = useTailwind();
@@ -23,7 +22,6 @@ const CustomersScreen = () => {
         }}
         style={tw("w-full h-64")}
       />
-
       <Input
         placeholder='Search by Customer'
         value={input}
@@ -33,11 +31,19 @@ const CustomersScreen = () => {
 
       {!loading &&
         data &&
-        data?.getCustomers.map(
-          ({ name: ID, value: { name, email } }: CustomerResponse) => (
-            <CustomerCard key={ID} name={name} email={email} userId={ID} />
+        data?.getCustomers
+          .filter(({ value: { name } }: CustomerResponse) =>
+            name.includes(input)
           )
-        )}
+          .map(({ name: ID, value: { name, email } }: CustomerResponse) => (
+            <CustomerCard key={ID} name={name} email={email} userId={ID} />
+          ))}
+
+      {/* Loading handling */}
+      {loading && <Text>Loading...</Text>}
+
+      {/* Error handling */}
+      {error && <Text>"Error try again"</Text>}
     </ScrollView>
   );
 };

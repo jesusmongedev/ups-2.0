@@ -20,7 +20,7 @@ const CustomerCard = ({ email, name, userId }: CustomerCardProps) => {
   const { navigate } = useNavigation<CustomerScreenNavigationProp>();
 
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => navigate("MyModal", { name, userId })}>
       <Card containerStyle={tw("p-5 rounded-lg")}>
         <View style={tw("flex-row justify-between")}>
           <View>

@@ -5,7 +5,6 @@ import { GET_ORDERS } from "../graphql/queries";
 
 export const useCustomerOrders = (userId: string) => {
   const { loading, error, data } = useQuery(GET_ORDERS);
-  console.log("data", data);
   const [orders, setOrders] = useState<Order[]>([]);
 
   useEffect(() => {
