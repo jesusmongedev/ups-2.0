@@ -27,7 +27,7 @@ const ModalScreen = () => {
   const { loading, error, orders } = useCustomerOrders(userId);
 
   return (
-    <View style={{ marginTop: top }}>
+    <View style={{ marginTop: top, paddingBottom: 100 }}>
       <TouchableOpacity
         style={tw("absolute right-5 top-5 z-10")}
         onPress={() => goBack()}>
@@ -48,11 +48,20 @@ const ModalScreen = () => {
       </View>
 
       {/* Delivery Card */}
-      <FlatList
-        data={orders}
-        keyExtractor={(order) => order.trackingId}
-        renderItem={({ item: order }) => <DeliveryCard order={order} />}
-      />
+      {orders.length > 0 && (
+        <FlatList
+          data={orders}
+          keyExtractor={(order) => order.trackingId}
+          renderItem={({ item: order }) => <DeliveryCard order={order} />}
+        />
+      )}
+      {orders.length === 0 && (
+        <View style={[tw("items-center justify-center"), { height: "90%" }]}>
+          <Text style={tw("text-sm italic")}>
+            This customer has not made any deliveries yet
+          </Text>
+        </View>
+      )}
     </View>
   );
 };

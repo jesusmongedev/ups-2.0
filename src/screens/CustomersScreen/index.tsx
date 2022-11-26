@@ -1,4 +1,4 @@
-import { ScrollView, Text } from "react-native";
+import { ActivityIndicator, ScrollView, Text } from "react-native";
 import React, { useState } from "react";
 import { useTailwind } from "tailwind-rn/dist";
 
@@ -14,6 +14,10 @@ const CustomersScreen = () => {
   const [input, setInput] = useState<string>("");
   const { loading, error, data } = useQuery(GET_CUSTOMERS);
 
+  console.log("error", error);
+  console.log("loading", loading);
+  console.log("data", data);
+
   return (
     <ScrollView style={{ backgroundColor: Colors.primary }}>
       <Image
@@ -21,6 +25,7 @@ const CustomersScreen = () => {
           uri: "https://links.papareact.com/3jc",
         }}
         style={tw("w-full h-64")}
+        PlaceholderContent={<ActivityIndicator />}
       />
       <Input
         placeholder='Search by Customer'
@@ -43,7 +48,8 @@ const CustomersScreen = () => {
       {loading && <Text>Loading...</Text>}
 
       {/* Error handling */}
-      {error && <Text>"Error try again"</Text>}
+      {error && <Text>Error try again</Text>}
+      <Text></Text>
     </ScrollView>
   );
 };
