@@ -4,6 +4,7 @@ import CustomersScreen from "../screens/CustomersScreen/index";
 import OrdersScreen from "../screens/OrdersScreen";
 import { Colors } from "../shared/theme/Colors";
 import { Icon } from "@rneui/themed";
+import { Text } from "react-native";
 
 export type TabParamList = {
   Customers: undefined;
@@ -36,7 +37,21 @@ const TabNavigator = () => {
         },
       })}>
       <Tab.Screen name='Customers' component={CustomersScreen} />
-      <Tab.Screen name='Orders' component={OrdersScreen} />
+      <Tab.Screen
+        options={{
+          tabBarLabel: ({ focused, color }) => (
+            <Text
+              style={{
+                color: focused ? Colors.secondary : color,
+                fontSize: 10,
+              }}>
+              Orders
+            </Text>
+          ),
+        }}
+        name='Orders'
+        component={OrdersScreen}
+      />
     </Tab.Navigator>
   );
 };

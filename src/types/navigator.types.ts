@@ -8,3 +8,8 @@ export type CustomerScreenNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabParamList, "Customers">,
   NativeStackNavigationProp<RootStackParamList>
 >;
+
+export type OrdersScreenNavigationProp = CompositeNavigationProp<
+  BottomTabNavigationProp<TabParamList, "Orders">,
+  NativeStackNavigationProp<any>
+>;
