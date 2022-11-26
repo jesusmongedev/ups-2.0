@@ -6,8 +6,12 @@ import utilities from "./tailwind.json";
 import RootNavigator from "./src/navigator/RootNavigator";
 
 const client = new ApolloClient({
-  uri: "http://192.168.1.54:5001/api/ups-graphql",
+  uri: "https://cangucu.stepzen.net/api/ups-graphql/__graphql",
   cache: new InMemoryCache(),
+  headers: {
+    Authorization:
+      "Apikey cangucu::stepzen.net+1000::ffc6ea518cb787e68d7e35ac601b5bdb366beec969881a35d0902f1476577a76",
+  },
 });
 
 export default function App() {

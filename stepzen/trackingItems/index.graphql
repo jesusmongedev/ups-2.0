@@ -22,12 +22,12 @@ type TrackingItemsList {
 type Query {
   getTrackingItemById(id: ID!): TrackingItems
     @rest(
-      endpoint: "https://ups-clone-yt-stepzen-8c639-default-rtdb.firebaseio.com/trackingItems/$id.json"
+      endpoint: "https://ups-clone-graphql-default-rtdb.firebaseio.com/trackingItems/$id.json"
     )
 
   getTrackingItems: [TrackingItemsList]
     @rest(
-      endpoint: "https://ups-clone-yt-stepzen-8c639-default-rtdb.firebaseio.com/trackingItems.json"
+      endpoint: "https://ups-clone-graphql-default-rtdb.firebaseio.com/trackingItems.json"
       transforms: [{ pathpattern: [], editor: "objectToArray" }]
     )
 }

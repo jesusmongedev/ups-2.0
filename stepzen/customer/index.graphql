@@ -10,12 +10,12 @@ type CustomerList {
 type Query {
   getCustomerById(id: ID!): Customer
     @rest(
-      endpoint: "https://ups-clone-yt-stepzen-8c639-default-rtdb.firebaseio.com/customers/$id.json"
+      endpoint: "https://ups-clone-graphql-default-rtdb.firebaseio.com/customers/$id.json"
     )
 
   getCustomers: [CustomerList]
     @rest(
-      endpoint: "https://ups-clone-yt-stepzen-8c639-default-rtdb.firebaseio.com/customers.json"
+      endpoint: "https://ups-clone-graphql-default-rtdb.firebaseio.com/customers.json"
       transforms: [{ pathpattern: [], editor: "objectToArray" }]
     )
 }
